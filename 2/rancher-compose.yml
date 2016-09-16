@@ -1,0 +1,34 @@
+.catalog:
+  name: Redmine
+  version: Latest
+  description: |
+    Redmine is a free and open source, web-based project management and issue tracking tool. It allows users to manage multiple projects and associated subprojects. It features per project wikis and forums, time tracking, and flexible role based access control. It includes a calendar and Gantt charts to aid visual representation of projects and their deadlines. Redmine integrates with various version control systems and includes a repository browser and diff viewer.
+  minimum_rancher_version: v0.56.0
+  maintainer: "Go Chiba <go.chiba@gmail.com>"
+  uuid: redmine-2
+
+lb:
+  scale: 1
+  load_balancer_config:
+    name: lb config
+  health_check:
+    port: 3000
+    interval: 2000
+    unhealthy_threshold: 3
+    healthy_threshold: 2
+    response_timeout: 2000
+
+redmine:
+  scale: 1
+  retain_ip: true
+  health_check:
+    port: 3000
+    interval: 30000
+    unhealthy_threshold: 3
+    strategy: recreate
+    response_timeout: 2000
+    healthy_threshold: 2
+
+postgres:
+  scale: 1
+  retain_ip: true
