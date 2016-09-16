@@ -19,7 +19,7 @@ lb:
     response_timeout: 2000
 
 redmine:
-  scale: 1
+  scale: 2
   retain_ip: true
   health_check:
     port: 3000
